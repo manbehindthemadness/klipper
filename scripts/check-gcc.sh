@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # This script checks for a broken Ubuntu 18.04 arm-none-eabi-gcc compile
 
 f1="$1"
