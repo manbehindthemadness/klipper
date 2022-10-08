@@ -28,7 +28,6 @@ trapq_append(struct trapq *tq, double print_time, int accel_order
              , double decel_t, double decel_offset_t, double total_decel_t
              , double start_pos_x, double start_pos_y, double start_pos_z
              , double axes_r_x, double axes_r_y, double axes_r_z
-             , double start_v, double cruise_v, double accel)
              , double start_accel_v, double cruise_v
              , double effective_accel, double effective_decel)
 {
