@@ -183,7 +183,7 @@ trapq_finalize_moves(struct trapq *tq, double print_time)
         if (m->print_time + m->move_t > print_time)
             break;
         list_del(&m->node);
-        if (m->start_v || m->half_accel)
+        if (m->s.c1 || m->s.c2 || m->s.c3 || m->s.c4 || m->s.c5 || m->s.c6)
             list_add_head(&m->node, &tq->history);
         else
             free(m);
@@ -245,14 +245,13 @@ trapq_extract_old(struct trapq *tq, struct pull_move *p, int max
             continue;
         p->print_time = m->print_time;
         p->move_t = m->move_t;
-        p->start_v = m->start_v;
-        p->accel = 2. * m->half_accel;
-        p->start_x = m->start_pos.x;
-        p->start_y = m->start_pos.y;
-        p->start_z = m->start_pos.z;
-        p->x_r = m->axes_r.x;
-        p->y_r = m->axes_r.y;
-        p->z_r = m->axes_r.z;
+        p->s = m->s;
+        p->start_pos.x = m->start_pos.x;
+        p->start_pos.y = m->start_pos.y;
+        p->start_pos.z = m->start_pos.z;
+        p->axes_r.x = m->axes_r.x;
+        p->axes_r.y = m->axes_r.y;
+        p->axes_r.z  = m->axes_r.z;
         p++;
         res++;
     }

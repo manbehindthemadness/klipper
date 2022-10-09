@@ -27,9 +27,10 @@ struct trapq {
 
 struct pull_move {
     double print_time, move_t;
-    double start_v, accel;
-    double start_x, start_y, start_z;
-    double x_r, y_r, z_r;
+    struct coord start_pos, axes_r;
+    struct scurve s;
+
+    struct list_node node;
 };
 
 struct move *move_alloc(void);
